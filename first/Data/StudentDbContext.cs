@@ -10,6 +10,7 @@ namespace first.Data
         {
             
         }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Faculty> faculties { get; set; }
         public DbSet<AccountModel> accounts { get; set; }
