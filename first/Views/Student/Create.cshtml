@@ -1,0 +1,77 @@
+﻿@model first.Models.Student;
+
+@{
+    ViewData["Title"] = "Create";
+    //Layout = "~/Views/Student/Create.cshtml";
+    Layout = "_Layout";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="modal-body">
+            <form method="post" asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Student_name" class="control-label"></label>
+                    <input asp-for="Student_name" class="form-control" />
+                    <span asp-validation-for="Student_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Student_description" class="control-label"></label>
+                    <textarea asp-for="Student_description" class="form-control"></textarea>
+                    <span asp-validation-for="Student_description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <input asp-for="Photo" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select class="form-select form-select-lg mb-3" asp-for="Gender" required>
+                        <option value="">Choose a gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Faculty" class="control-label"></label>
+                    <select class="form-select form-select-lg mb-3 " asp-for="Faculty" asp-items="@ViewBag.FacultyListName" required>
+                        <option value="">Choose your faculty</option>
+                    </select>
+                    <span asp-validation-for="Faculty" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Enabled" /> @Html.DisplayNameFor(model => model.Enabled)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

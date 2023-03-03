@@ -1,0 +1,41 @@
+﻿@model IEnumerable<first.Models.MenuModel>
+
+@foreach (var menu in Model)
+{
+    if(menu.PerentID == null)
+    {
+        var child = Model.Where(x => x.PerentID == menu.ID).ToList();
+        if (child != null)
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="@Url.ActionLink(menu.MenuUrl)" id="dropdown01"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @menu.MenuText
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @foreach (var itm in child)
+                    {
+                        <a href="#" class="dropdown-item">@itm.MenuText</a>
+                    }
+                </div>
+            </li>
+        }
+    }
+}
+
+
+
+
+@*<a asp-controller="Front" asp-action="Index"
+                @menu.MenuList class="nav-item nav-link active">Home</a>
+                <a asp-controller="Front" asp-action="About" class="nav-item nav-link ">About</a>
+                <a asp-controller="Front"asp-action="Courser" class="nav-item nav-link">Courses</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
+                <a asp-controller="Front" asp-action="Contact" class="nav-item nav-link">Contact</a>*@

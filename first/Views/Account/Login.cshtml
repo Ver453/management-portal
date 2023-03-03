@@ -1,0 +1,26 @@
+﻿@model first.Models.AccountModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_ViewLayout";
+}
+
+<h1>Login</h1>
+
+<form method="post" asp-action="Login" class="card card-body justify-content-center align-items-center">
+    <div class="form-group">
+        <label asp-for="Email" for="exampleInputEmail1"></label>
+        <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" for="exampleInputPassword1"></label>
+        <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div>
+        <input asp-controller="Home" asp-action="Index" type="submit" value="Login" class="btn btn-primary"></a>
+        <input asp-controller="Account" asp-action="Register" type="submit" value="Register" class="btn btn-primary"></input>
+    </div>
+</form>

@@ -1,0 +1,148 @@
+﻿@model IEnumerable<first.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Student/Index.cshtml";
+    Layout = "_Layout";
+}
+
+<h1>Student Manage Portal</h1>
+<div class="col-md-12">
+    <div style="overflow-x:auto">
+        <div class="card">
+            <div class=" card-body table-responsive container-fluid">
+                <p>
+                    <a class="btn btn-light" asp-action="Create">Add Student</a>
+                </p>
+                <table class="table  table-align-items-center table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Student_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Student_description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Gender)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Enabled)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var stdlist in Model)
+                        {
+                            <tr style="text-align:center">
+                                <td>
+                                    @Html.DisplayFor(modelItem => stdlist.Student_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => stdlist.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => stdlist.Student_description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => stdlist.Gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => stdlist.Enabled)
+                                </td>
+                                <td>
+                                    <img src="~/img/@stdlist.imgUrl" width="80px" ,height="50px" />
+                                </td>
+                                <td>
+                                    <a asp-controller="Student" asp-action="Edit" class="btn btn-success" asp-route-id="@stdlist.Id"><i class="fa fa-pencil"></i></a>|
+                                    <a asp-controller="Student" asp-action="Delete" class="btn btn-danger" asp-route-id="@stdlist.Id"><i class="fa fa-trash" aria-hidden="true"></i></a>|
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stdlist in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => stdlist.Student_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => stdlist.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => stdlist.Student_description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => stdlist.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => stdlist.Enabled)
+                </td>
+                <td>
+                    <img src="~/img/@stdlist.imgUrl" width="80px" ,height="50px" />
+                </td>
+                <td>
+                    <a asp-controller="Student" asp-action="Edit" class=" btn btn-sm btn-primary" asp-route-id="@stdlist.Id">Edit</a> |
+                    <a asp-controller="Student" asp-action="Details" class=" btn btn-sm btn-light" asp-route-id="@stdlist.Id">Details</a> |
+                    <a data-toggle="modal" class=" btn btn-sm btn-danger" asp-controller="Student" asp-action="Delete" asp-route-id="@stdlist.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+
+
+

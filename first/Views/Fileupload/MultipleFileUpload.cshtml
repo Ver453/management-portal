@@ -1,0 +1,40 @@
+﻿@model first.Models.MultipleFileUpload;
+
+@{
+  
+    Layout = "_Layout";
+}
+
+<h1>Multiple File Upload</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="modal-body">
+            <form method="post" asp-controller="FileUpload" asp-action="MultipleFileUpload" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input multiple asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Files" class="control-label"></label>
+                    <input multiple asp-for="Files" class="form-control" />
+                    <span asp-validation-for="Files" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Upload" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
