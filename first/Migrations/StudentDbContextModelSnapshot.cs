@@ -83,10 +83,13 @@ namespace first.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("MenuText")
+                    b.Property<string>("Action")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MenuUrl")
+                    b.Property<string>("Controller")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuText")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PerentID")

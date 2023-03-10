@@ -16,7 +16,8 @@ namespace first.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MenuText = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PerentID = table.Column<int>(type: "int", nullable: true),
-                    MenuUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Controller = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Action = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

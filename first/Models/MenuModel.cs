@@ -11,10 +11,11 @@ namespace first.Models
         public int ID { get; set; }
         public string MenuText { get; set; }
         public int? PerentID { get; set; }
-        public string MenuUrl { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
 
         [NotMapped]
-        public  List<MenuModel> MenuList { get; set; }
+        public List<MenuModel> MenuList { get; set; }
 
         public List<MenuModel> MenuTree(List<MenuModel> menuList, int? perentid)
         {
@@ -24,7 +25,8 @@ namespace first.Models
                    ID = x.ID,
                    MenuText = x.MenuText,
                    PerentID = x.PerentID,
-                   MenuUrl = x.MenuUrl,
+                   Controller = x.Controller,
+                   Action = x.Action,
                    MenuList = MenuTree(menuList, x.ID)
 
                }).ToList();

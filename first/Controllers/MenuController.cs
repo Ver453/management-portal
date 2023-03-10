@@ -1,11 +1,6 @@
 ﻿using first.Data;
-using first.Migrations;
 using first.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using NuGet.Protocol.Plugins;
 
 namespace first.Controllers
 {
@@ -16,7 +11,9 @@ namespace first.Controllers
         {
             _context = context;
         }
-        MenuModel menu = new MenuModel();
+        //Create a new instance of the MenuModel class
+       MenuModel menu = new MenuModel();
+        //Define a method to generate the menu as a partial view
         public PartialViewResult GenerateMenu()
         {
             var menuList = _context.menus.ToList();

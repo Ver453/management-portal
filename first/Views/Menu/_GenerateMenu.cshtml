@@ -10,13 +10,14 @@
         {
             // render the parent menu item with child items
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" href="@Url.Action(menu.MenuUrl)">
+                <a class="nav-link dropdown-toggle" href="@Url.Action(menu.Action, menu.Controller)">
                     @menu.MenuText
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-@menu.ID">
                     @foreach (var itm in child)
                     {
-                        <a href="#" class="dropdown-item">@itm.MenuText</a>
+
+                        <a href="@Url.Action(itm.Action, itm.Controller)" class="dropdown-item">@itm.MenuText</a>
                     }
                 </div>
             </li>
@@ -25,7 +26,7 @@
         {
             // render the parent menu item with no child items
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action(menu.MenuUrl)">
+                <a class="nav-link" href="@Url.Action(menu.Action, menu.Controller)">
                     @menu.MenuText
                 </a>
             </li>

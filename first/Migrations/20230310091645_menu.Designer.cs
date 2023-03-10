@@ -12,7 +12,7 @@ using first.Data;
 namespace first.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20230207102114_menu")]
+    [Migration("20230310091645_menu")]
     partial class menu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,10 +85,13 @@ namespace first.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("MenuText")
+                    b.Property<string>("Action")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MenuUrl")
+                    b.Property<string>("Controller")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuText")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PerentID")
@@ -97,6 +100,25 @@ namespace first.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("menus");
+                });
+
+            modelBuilder.Entity("first.Models.MultipleFileUpload", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("first.Models.Student", b =>

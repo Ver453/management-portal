@@ -23,7 +23,8 @@ namespace first.Controllers
 
         public IActionResult Team()
         {
-            return View();
+            List<MenuModel> menu = _context.menus.ToList();
+            return View(menu);
 
         }
         public IActionResult Courses()
@@ -39,11 +40,13 @@ namespace first.Controllers
 
         public IActionResult About()
         {
-            return View();
+            List<MenuModel> menu = _context.menus.ToList();
+            return View(menu);
         }
         public IActionResult Contact()
         {
-            return View();
+            List<MenuModel> menu = _context.menus.ToList();
+            return View(menu);
         }
     }
 }
